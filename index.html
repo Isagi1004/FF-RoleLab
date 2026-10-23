@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b10">
+  <meta name="description" content="FF RoleLab — build and compare Free Fire character combinations for your role, weapons, and game mode.">
+  <title>FF RoleLab — Build your winning combo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="FF RoleLab home">
+      <span class="brand-mark"><span>FF</span></span>
+      <span class="brand-copy"><strong>FF ROLE<span>LAB</span></strong><small>CHARACTER COMBO ENGINE</small></span>
+    </a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a class="active" href="#builder">Builder</a><a href="#library">Skill library</a><a href="#saved">Saved builds <span id="savedCount" class="nav-count">0</span></a>
+    </nav>
+    <div class="status-pill"><i></i> WEB BUILD <b>01</b></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> FIND YOUR EDGE</div>
+        <h1>YOUR ROLE.<br><span>YOUR COMBO.</span></h1>
+        <p>Build a character lineup around the way you play. Tune your role, choose your weapons, and get combinations made for your next match.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#builder">Build a combination <span>↗</span></a><a class="text-link" href="#library">Explore skill library <span>→</span></a></div>
+        <div class="hero-stats"><div><strong>07</strong><span>PLAYSTYLES</span></div><div><strong>67</strong><span>ROSTER ENTRIES</span></div><div><strong>∞</strong><span>WAYS TO TUNE</span></div></div>
+      </div>
+      <div class="hero-art" aria-label="Decorative futuristic target graphic">
+        <div class="target target-outer"></div><div class="target target-mid"></div><div class="target target-inner"></div>
+        <div class="crosshair horizontal"></div><div class="crosshair vertical"></div>
+        <div class="target-center"><span>FR</span><small>ROLE<br>OPTIMIZER</small></div>
+        <div class="orbit-label label-top">COMBO / 07</div><div class="orbit-label label-bottom">TACTICAL ENGINE <b>● ONLINE</b></div>
+        <div class="side-code">R-01<br>FFRL</div>
+      </div>
+    </section>
+
+    <section class="section builder-section" id="builder">
+      <div class="section-heading"><div><div class="eyebrow">01 / COMBINATION BUILDER</div><h2>Configure your loadout<span>.</span></h2></div><span class="section-note">RULE-BASED RANKING <b>●</b> LOCAL DEMO</span></div>
+      <div class="builder-grid">
+        <aside class="panel controls-panel">
+          <div class="panel-title"><span class="step-number">01</span><div><h3>Combat profile</h3><p>Tell the engine how you play.</p></div></div>
+          <label class="field-label" for="roleSelect">YOUR ROLE</label>
+          <select id="roleSelect" class="control">
+            <option value="Rusher">Rusher</option><option value="Support">Support</option><option value="Sniper">Sniper</option><option value="Flanker">Flanker</option><option value="IGL / Strategist">IGL / Strategist</option><option value="Defender / Anchor">Defender / Anchor</option><option value="Solo Clutch">Solo Clutch</option>
+          </select>
+          <label class="field-label" for="modeSelect">GAME MODE</label>
+          <select id="modeSelect" class="control"><option value="All modes">All modes</option><option value="Battle Royale">Battle Royale</option><option value="Clash Squad">Clash Squad</option><option value="Lone Wolf">Lone Wolf</option></select>
+          <label class="field-label" for="weaponSelect">MAIN WEAPON STYLE</label>
+          <select id="weaponSelect" class="control"><option value="Mixed">Mixed / flexible</option><option value="AR">Assault rifle (AR)</option><option value="SMG">SMG / close range</option><option value="Shotgun">Shotgun</option><option value="Sniper">Sniper / marksman</option><option value="LMG">LMG</option></select>
+          <div class="slider-head"><label class="field-label" for="aggression">AGGRESSION LEVEL</label><span id="aggressionValue">70 / 100</span></div>
+          <input id="aggression" type="range" min="0" max="100" value="70" class="range-control">
+          <div class="range-ends"><span>TACTICAL</span><span>FULL SEND</span></div>
+          <div class="filter-note"><span class="tiny-icon">i</span><span>Recommendations are suitability estimates, not guaranteed win rates. Character abilities can change between patches.</span></div>
+          <button id="generateBtn" class="button button-primary button-full">Generate combinations <span>↗</span></button>
+        </aside>
+        <section class="results-column">
+          <div class="results-toolbar"><div><div class="eyebrow">02 / YOUR RESULTS</div><h3 id="resultsTitle">Rusher <span>loadout</span></h3></div><button id="rerollBtn" class="button button-ghost">↻ Re-roll</button></div>
+          <div id="results" class="results-list" aria-live="polite"></div>
+          <div class="results-footer"><span><i></i> SCORED FOR YOUR SETTINGS</span><span id="resultCount">3 builds</span></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section" id="library">
+      <div class="section-heading"><div><div class="eyebrow">03 / SKILL LIBRARY</div><h2>Know your roster<span>.</span></h2><p class="section-subtitle">All 67 roster entries listed in the October 2026 roster guide, with verification status shown on every profile.</p></div>
+        <div><div class="library-search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search character or skill..." aria-label="Search character or skill"></div><div id="libraryCount" class="library-count">67 / 67 characters</div></div>
+      </div>
+      <div class="library-filters" id="tagFilters">
+        <button class="chip selected" data-tag="All">All profiles</button><button class="chip" data-tag="Damage">Damage</button><button class="chip" data-tag="Mobility">Mobility</button><button class="chip" data-tag="Survival">Survival</button><button class="chip" data-tag="Team">Team utility</button><button class="chip" data-tag="Info">Information</button><button class="chip" data-tag="Patch verified">Patch verified</button><button class="chip" data-tag="Needs verification">Needs verification</button>
+      </div>
+      <div id="characterGrid" class="character-grid"></div>
+      <p class="library-disclaimer">DATA QUALITY: Official OB55 patch notes are used for entries marked “Official patch update” (Kenta, Morse, Nero, Luna, Wukong, and Skyler patch changes). Other skill summaries are secondary-source descriptions and are explicitly marked “Needs in-game verification”; exact values and any later changes are not assumed. Verify all abilities in the live game before competitive use. Sources: <a href="https://ff.garena.com/en/chars" target="_blank" rel="noopener">Garena character roster</a> · <a href="https://www.freefiremobile.com/en/article/1712/" target="_blank" rel="noopener">Official OB55 patch notes</a> · <a href="https://driffle.com/blog/free-fire-character-list/" target="_blank" rel="noopener">October 2026 roster reference</a>.</p>
+    </section>
+
+    <section class="section saved-section" id="saved">
+      <div class="section-heading"><div><div class="eyebrow">04 / YOUR COLLECTION</div><h2>Saved builds<span>.</span></h2><p class="section-subtitle">Your favorites stay in this browser on this device.</p></div><button id="clearSavedBtn" class="button button-ghost">Clear saved</button></div>
+      <div id="savedBuilds" class="saved-grid"></div>
+    </section>
+  </main>
+  <footer class="footer"><a class="brand footer-brand" href="#"><span class="brand-mark"><span>FF</span></span><span class="brand-copy"><strong>FF ROLE<span>LAB</span></strong><small>BUILT FOR YOUR PLAYSTYLE</small></span></a><p>Fan-made community tool. Not affiliated with Garena or Free Fire.</p><a href="#builder">BACK TO TOP ↑</a></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="character-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
